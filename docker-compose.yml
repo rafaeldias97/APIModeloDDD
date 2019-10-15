@@ -1,0 +1,23 @@
+version: '3'
+services:
+  dbmodelo:
+    image: microsoft/mssql-server-linux:latest
+    container_name: dbmodelo
+    restart: "always"
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=sa@12345
+
+  # apimodeloddd:
+    # image: apimodeloddd
+    # container_name: apimodeloddd
+    # build:
+      # context: .
+    # ports:
+      # - "5005:80"
+    # links:
+      # - dbmodelo
+    # depends_on:
+      # - dbmodelo

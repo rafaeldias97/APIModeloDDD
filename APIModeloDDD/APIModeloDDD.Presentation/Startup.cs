@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.IO;
 using System.Reflection;
 using APIModeloDDD.Infra.CrossCutting;
@@ -29,34 +29,34 @@ namespace APIModeloDDD.Presentation
             services.AddControllers();
 
             //Configuração do Swagger
-            services.ConfigureSwaggerGen(x =>
-            {
-                x.OperationFilter<AuthorizationHeaderParameterOperationFilter>();
-                x.OperationFilter<ProducesOperatioFilter>();
-            });
+            //services.ConfigureSwaggerGen(x =>
+            //{
+            //    x.OperationFilter<AuthorizationHeaderParameterOperationFilter>();
+            //    x.OperationFilter<ProducesOperatioFilter>();
+            //});
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info
-                {
-                    Version = "v1",
-                    Title = "API Modelo DDD",
-                    Description = "Exemplo de API usando padrão DDD",
-                    TermsOfService = "None",
-                    Contact = new Contact
-                    {
-                        Name = "Rafael Dias",
-                        Email = string.Empty,
-                        Url = "https://github.com/rafaeldias97"
-                    }
-                });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new Info
+            //    {
+            //        Version = "v1",
+            //        Title = "API Modelo DDD",
+            //        Description = "Exemplo de API usando padrão DDD",
+            //        TermsOfService = "None",
+            //        Contact = new Contact
+            //        {
+            //            Name = "Rafael Dias",
+            //            Email = string.Empty,
+            //            Url = "https://github.com/rafaeldias97"
+            //        }
+            //    });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+            //    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            //    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            //    c.IncludeXmlComments(xmlPath);
 
-                c.OperationFilter<ExamplesOperationFilter>();
-            });
+            //    c.OperationFilter<ExamplesOperationFilter>();
+            //});
 
             //AutoMapper
             services.AddAutoMapper(typeof(Startup));
@@ -73,12 +73,12 @@ namespace APIModeloDDD.Presentation
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint($"../swagger/v1/swagger.json", "apimodelo");
-            });
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint($"../swagger/v1/swagger.json", "apimodelo");
+            //});
 
             app.UseHttpsRedirection();
 

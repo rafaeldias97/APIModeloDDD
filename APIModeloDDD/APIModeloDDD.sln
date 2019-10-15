@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{CB0C04FB-4397-4ABC-8771-A4AC9F6AC6FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{D382E646-E68A-4CBC-ACB5-30C96FE2241B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Service", "3 - Service", "{45C4F588-5179-4FCC-B7A8-168667FFD3F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{3BDC807B-339D-4EDE-88B3-55F2B9C02787}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{3B38EC47-FC89-4169-A011-EE205B859A15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{C8233005-C85C-4BBA-8675-2AD75D0D2B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIModeloDDD.Presentation", "APIModeloDDD.Presentation\APIModeloDDD.Presentation.csproj", "{0A194D90-59A8-4C40-A5CD-F6D580E3D87F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIModeloDDD.Domain", "APIModeloDDD.Domain\APIModeloDDD.Domain.csproj", "{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIModeloDDD.Infra.Data", "APIModeloDDD.Infra.Data\APIModeloDDD.Infra.Data.csproj", "{D161E391-0698-4EF6-B80E-5168D363058C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIModeloDDD.Infra.CrossCutting", "APIModeloDDD.Infra.CrossCutting\APIModeloDDD.Infra.CrossCutting.csproj", "{D362A1D6-A94D-45B5-84C6-013859E8B91A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A194D90-59A8-4C40-A5CD-F6D580E3D87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A194D90-59A8-4C40-A5CD-F6D580E3D87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A194D90-59A8-4C40-A5CD-F6D580E3D87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A194D90-59A8-4C40-A5CD-F6D580E3D87F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D161E391-0698-4EF6-B80E-5168D363058C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D161E391-0698-4EF6-B80E-5168D363058C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D161E391-0698-4EF6-B80E-5168D363058C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D161E391-0698-4EF6-B80E-5168D363058C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D362A1D6-A94D-45B5-84C6-013859E8B91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D362A1D6-A94D-45B5-84C6-013859E8B91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D362A1D6-A94D-45B5-84C6-013859E8B91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D362A1D6-A94D-45B5-84C6-013859E8B91A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B38EC47-FC89-4169-A011-EE205B859A15} = {3BDC807B-339D-4EDE-88B3-55F2B9C02787}
+		{C8233005-C85C-4BBA-8675-2AD75D0D2B79} = {3BDC807B-339D-4EDE-88B3-55F2B9C02787}
+		{0A194D90-59A8-4C40-A5CD-F6D580E3D87F} = {CB0C04FB-4397-4ABC-8771-A4AC9F6AC6FB}
+		{B24333E8-D8FD-468B-9AA8-9EC5DA1A1232} = {D382E646-E68A-4CBC-ACB5-30C96FE2241B}
+		{D161E391-0698-4EF6-B80E-5168D363058C} = {3B38EC47-FC89-4169-A011-EE205B859A15}
+		{D362A1D6-A94D-45B5-84C6-013859E8B91A} = {C8233005-C85C-4BBA-8675-2AD75D0D2B79}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E74CD15A-F87F-40E4-BD0D-72333D34E883}
+	EndGlobalSection
+EndGlobal

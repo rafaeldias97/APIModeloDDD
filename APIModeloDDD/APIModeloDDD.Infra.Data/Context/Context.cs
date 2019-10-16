@@ -8,7 +8,7 @@ namespace APIModeloDDD.Infra.Data.Context
         public DbSet<Person> Person { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
-        {     
+        {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

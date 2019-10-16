@@ -10,6 +10,7 @@ namespace APIModeloDDD.Presentation.Mappers
         {
             CreateMap<PersonPostVM, Person>();
             CreateMap<PersonDeleteVM, Person>();
+            CreateMap<PersonAuthVM, Person>();
         }
     }
 }

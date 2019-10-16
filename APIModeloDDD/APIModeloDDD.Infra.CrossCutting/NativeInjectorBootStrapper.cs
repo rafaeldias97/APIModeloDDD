@@ -1,4 +1,5 @@
 ﻿using APIModeloDDD.Domain.Interfaces;
+using APIModeloDDD.Domain.Validations;
 using APIModeloDDD.Infra.Data.Context;
 using APIModeloDDD.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,8 @@ namespace APIModeloDDD.Infra.CrossCutting
             #endregion
 
             #region Validations
-            //services.AddScoped<UsuarioValidations>();
-            //services.AddScoped<LivrosValidations>();
-            //services.AddScoped<LoginValidations>();
+            services.AddScoped<PersonPostValidator>();
+            services.AddScoped<PersonAuthValidator>();
             #endregion
 
             services.AddDbContext<Context>(o => o.UseSqlServer("Server=localhost;Database=dbmodelo;User Id=sa;Password=sa@12345;"));

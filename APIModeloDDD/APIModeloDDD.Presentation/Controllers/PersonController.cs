@@ -1,8 +1,14 @@
 ﻿using APIModeloDDD.Domain.Interfaces;
 using APIModeloDDD.Domain.Models;
+using APIModeloDDD.Presentation.VM.JWT;
 using APIModeloDDD.Presentation.VM.Person;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace APIModeloDDD.Presentation.Controllers
@@ -13,10 +19,42 @@ namespace APIModeloDDD.Presentation.Controllers
     {
         private readonly IPersonRepository repository;
         private IMapper mapper { get; set; }
-        public PersonController(IMapper mapper, IPersonRepository repository)
+
+        private readonly TokenConfigurations tokenConfigurations;
+        public PersonController(IMapper mapper, IPersonRepository repository, TokenConfigurations tokenConfigurations)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.tokenConfigurations = tokenConfigurations; 
+        }
+
+        [HttpPost("auth")]
+        public async Task<IActionResult> Auth([FromBody] PersonAuthVM auth)
+        {
+            var _auth = this.mapper.Map<Person>(auth);
+            var id = repository.Auth(_auth);
+
+            if (id != 0)
+            {
+                //Gera o token
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Key));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+                var claims = new[] {
+                    new Claim("id", id.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
+
+                var token = new JwtSecurityToken(tokenConfigurations.Issuer,
+                    tokenConfigurations.Issuer,
+                    claims,
+                    expires: DateTime.Now.AddMinutes(120),
+                    signingCredentials: credentials);
+
+                return Ok(new { accessToken = new JwtSecurityTokenHandler().WriteToken(token) });
+            }
+
+            return BadRequest();
         }
 
         [HttpGet]

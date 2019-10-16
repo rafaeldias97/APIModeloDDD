@@ -9,7 +9,8 @@ namespace APIModeloDDD.Presentation.Mappers
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Person, PersonPostVM>();
-            CreateMap<PersonDeleteVM, Person>();
+            CreateMap<Person, PersonDeleteVM>();
+            CreateMap<Person, PersonAuthVM>();
         }
     }
 }

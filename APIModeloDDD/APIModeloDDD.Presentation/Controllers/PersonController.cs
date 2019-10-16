@@ -1,5 +1,6 @@
 ﻿using APIModeloDDD.Domain.Interfaces;
 using APIModeloDDD.Domain.Models;
+using APIModeloDDD.Domain.Validations;
 using APIModeloDDD.Presentation.VM.JWT;
 using APIModeloDDD.Presentation.VM.Person;
 using AutoMapper;
@@ -29,14 +30,18 @@ namespace APIModeloDDD.Presentation.Controllers
         }
 
         [HttpPost("auth")]
-        public async Task<IActionResult> Auth([FromBody] PersonAuthVM auth)
+        public async Task<IActionResult> Auth([FromBody] PersonAuthVM auth, [FromServices] PersonAuthValidator validator)
         {
             var _auth = this.mapper.Map<Person>(auth);
-            var id = repository.Auth(_auth);
+            var _validator = validator.Validate(_auth);
+
+            if (!_validator.IsValid) return BadRequest(new { Erros = _validator.Errors });
+
+            int id = repository.Auth(_auth);
 
             if (id != 0)
             {
-                //Gera o token
+                //Generate token
                 var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Key));
                 var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -54,7 +59,7 @@ namespace APIModeloDDD.Presentation.Controllers
                 return Ok(new { accessToken = new JwtSecurityTokenHandler().WriteToken(token) });
             }
 
-            return BadRequest();
+            return BadRequest("Usuário Inválido");
         }
 
         [HttpGet]
@@ -65,9 +70,13 @@ namespace APIModeloDDD.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] PersonPostVM person)
+        public async Task<IActionResult> Post([FromBody] PersonPostVM person, [FromServices] PersonPostValidator validator)
         {
             var _person = this.mapper.Map<Person>(person);
+
+            var _validator = validator.Validate(_person);
+            if (!_validator.IsValid) return BadRequest(new { Erros = _validator.Errors });
+
             await repository.Save(_person);
             return Ok();
         }
